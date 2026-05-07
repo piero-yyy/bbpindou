@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>饼饼的拼豆小屋 | 大连甘井子万达旁的家庭拼豆店</title>
+<meta name="description" content="饼饼的拼豆小屋官方主页 —— 大连甘井子万达旁家庭拼豆店，Hello Kitty 主题手作、像素风作品、定制服务与价目表。" />
+<style>
+  :root{
+    --pink:#ffc6d9;
+    --pink-deep:#ff6fa3;
+    --pink-soft:#ffe8f0;
+    --cream:#fff9f3;
+    --mint:#c8ecd9;
+    --yellow:#ffe8a3;
+    --blue:#cfe7ff;
+    --text:#4a3540;
+    --shadow:0 8px 24px rgba(255,111,163,.18);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:"PingFang SC","Microsoft YaHei","Helvetica Neue",sans-serif;
+    color:var(--text);
+    background:var(--cream);
+    line-height:1.75;
+  }
+  a{color:inherit;text-decoration:none;}
+
+  /* 格子背景，呼应您的店招 */
+  .checker{
+    background-image:
+      linear-gradient(45deg,#ffe8f0 25%,transparent 25%),
+      linear-gradient(-45deg,#ffe8f0 25%,transparent 25%),
+      linear-gradient(45deg,transparent 75%,#fff5e6 75%),
+      linear-gradient(-45deg,transparent 75%,#fff5e6 75%);
+    background-size:40px 40px;
+    background-position:0 0,0 20px,20px -20px,-20px 0;
+    background-color:#fff;
+  }
+
+  /* 顶部导航 */
+  header{
+    position:sticky;top:0;z-index:99;
+    background:rgba(255,249,243,.94);
+    backdrop-filter:blur(8px);
+    border-bottom:2px dashed var(--pink);
+  }
+  .nav{
+    max-width:1100px;margin:0 auto;
+    display:flex;justify-content:space-between;align-items:center;
+    padding:14px 24px;
+  }
+  .logo{font-size:22px;font-weight:800;color:var(--pink-deep);letter-spacing:1px;}
+  .logo span{font-size:13px;color:var(--text);font-weight:400;margin-left:6px;}
+  .nav ul{display:flex;gap:24px;list-style:none;font-size:15px;}
+  .nav ul a:hover{color:var(--pink-deep);}
+  @media(max-width:640px){.nav ul{display:none;}}
+
+  /* Hero */
+  .hero{
+    background:
+      radial-gradient(circle at 15% 25%, #ffd6e6 0%, transparent 50%),
+      radial-gradient(circle at 85% 75%, #d6f0e2 0%, transparent 50%),
+      radial-gradient(circle at 50% 50%, #fff0c2 0%, transparent 60%),
+      var(--cream);
+    padding:90px 24px 100px;
+    text-align:center;
+    position:relative;overflow:hidden;
+  }
+  .hero .tag{
+    display:inline-block;background:#fff;
+    border:2px solid var(--pink-deep);color:var(--pink-deep);
+    padding:6px 18px;border-radius:30px;font-size:13px;font-weight:700;
+    margin-bottom:20px;box-shadow:var(--shadow);
+  }
+  .hero h1{
+    font-size:52px;font-weight:900;
+    background:linear-gradient(90deg,var(--pink-deep) 0%,#ff9966 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    margin-bottom:18px;line-height:1.2;
+  }
+  .hero p.sub{font-size:18px;color:#7a5a68;max-width:640px;margin:0 auto 28px;}
+  .badges{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-bottom:34px;}
+  .badge{
+    background:#fff;border:2px solid var(--pink);
+    padding:8px 18px;border-radius:30px;font-size:14px;
+    box-shadow:var(--shadow);
+  }
+  .btn{
+    display:inline-block;
+    background:var(--pink-deep);color:#fff;
+    padding:14px 36px;border-radius:30px;
+    font-weight:700;font-size:16px;
+    box-shadow:var(--shadow);
+    transition:transform .2s;
+    margin:6px;
+  }
+  .btn:hover{transform:translateY(-3px);}
+  .btn.outline{background:#fff;color:var(--pink-deep);border:2px solid var(--pink-deep);}
+
+  .dot{position:absolute;border-radius:50%;opacity:.7;}
+  .d1{width:18px;height:18px;background:var(--pink);top:15%;left:8%;}
+  .d2{width:24px;height:24px;background:var(--yellow);top:60%;left:12%;}
+  .d3{width:14px;height:14px;background:var(--mint);top:25%;right:10%;}
+  .d4{width:20px;height:20px;background:var(--pink-deep);top:70%;right:15%;}
+  .d5{width:12px;height:12px;background:var(--blue);top:40%;right:6%;}
+
+  section{padding:80px 24px;}
+  .container{max-width:1100px;margin:0 auto;}
+  .sec-title{
+    text-align:center;font-size:34px;font-weight:800;
+    margin-bottom:14px;color:var(--pink-deep);
+  }
+  .sec-title::before{content:"✿ ";}
+  .sec-title::after{content:" ✿";}
+  .sec-desc{text-align:center;color:#7a5a68;margin-bottom:48px;font-size:15px;}
+
+  /* 关于 */
+  .about{background:#fff;}
+  .about-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:50px;align-items:center;}
+  .about-img{
+    aspect-ratio:1;border-radius:24px;
+    background:
+      radial-gradient(circle at 30% 30%, #ffb6c8 0%, transparent 50%),
+      radial-gradient(circle at 70% 70%, #ffe48a 0%, transparent 50%),
+      linear-gradient(135deg,#ffd6e6,#fff0c2);
+    display:flex;align-items:center;justify-content:center;
+    font-size:90px;box-shadow:var(--shadow);
+    position:relative;
+  }
+  .about-img::after{
+    content:"饼饼";position:absolute;bottom:30px;
+    background:#fff;padding:6px 16px;border-radius:20px;
+    font-size:14px;color:var(--pink-deep);font-weight:700;
+    box-shadow:var(--shadow);
+  }
+  .about p{margin-bottom:14px;font-size:16px;}
+  .about .info-box{
+    margin-top:20px;padding:20px;background:var(--pink-soft);
+    border-radius:16px;border-left:4px solid var(--pink-deep);
+  }
+  @media(max-width:768px){.about-grid{grid-template-columns:1fr;}}
+
+  /* 营业信息卡片 */
+  .info{background:var(--cream);}
+  .info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px;}
+  .info-card{
+    background:#fff;border-radius:20px;padding:28px;
+    box-shadow:var(--shadow);text-align:center;
+    border:2px solid transparent;transition:.3s;
+  }
+  .info-card:hover{border-color:var(--pink);transform:translateY(-4px);}
+  .info-card .ic{font-size:42px;margin-bottom:12px;}
+  .info-card h4{color:var(--pink-deep);margin-bottom:8px;}
+  .info-card p{font-size:15px;}
+  .info-card strong{color:var(--pink-deep);}
+
+  /* 作品 */
+  .gallery{background:#fff;}
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:22px;
+  }
+  .card{
+    background:var(--cream);border-radius:18px;overflow:hidden;
+    box-shadow:var(--shadow);transition:transform .3s;
+    border:2px solid transparent;
+  }
+  .card:hover{transform:translateY(-6px);border-color:var(--pink);}
+  .card .pic{
+    aspect-ratio:1;
+    display:flex;align-items:center;justify-content:center;
+    font-size:64px;position:relative;
+  }
+  .pic.c1{background:linear-gradient(135deg,#2a2a3e,#5a4a6e);color:#fff;}
+  .pic.c2{background:linear-gradient(135deg,#ffd6e6,#e0c8ff);}
+  .pic.c3{background:linear-gradient(135deg,#fff0c2,#ffd6c2);}
+  .pic.c4{background:linear-gradient(135deg,#ffe8a3,#ffb6c8);}
+  .pic.c5{background:linear-gradient(135deg,#ffb6c8,#ff9966);}
+  .pic.c6{background:linear-gradient(135deg,#cfe7ff,#ffd6e6);}
+  .card .info-pad{padding:16px;}
+  .card h4{margin-bottom:6px;}
+  .card .tag-s{
+    display:inline-block;font-size:12px;
+    background:var(--pink-soft);color:var(--pink-deep);
+    padding:3px 10px;border-radius:10px;margin-top:6px;font-weight:600;
+  }
+
+  /* 价格 */
+  .price{background:var(--pink-soft);}
+  .price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  @media(max-width:768px){.price-grid{grid-template-columns:1fr;}}
+  .price-card{
+    background:#fff;border-radius:24px;padding:36px 24px;
+    text-align:center;box-shadow:var(--shadow);
+    position:relative;transition:.3s;
+  }
+  .price-card:hover{transform:translateY(-6px);}
+  .price-card.featured{
+    border:3px solid var(--pink-deep);
+    transform:scale(1.03);
+  }
+  .price-card.featured::before{
+    content:"热门";position:absolute;top:-14px;left:50%;
+    transform:translateX(-50%);
+    background:var(--pink-deep);color:#fff;
+    padding:4px 16px;border-radius:14px;font-size:12px;font-weight:700;
+  }
+  .price-card .ic{font-size:50px;margin-bottom:10px;}
+  .price-card h3{color:var(--pink-deep);margin-bottom:14px;font-size:22px;}
+  .price-card .num{
+    font-size:46px;font-weight:900;color:var(--pink-deep);
+  }
+  .price-card .num small{font-size:18px;}
+  .price-card .free{
+    font-size:13px;color:#7a5a68;margin-top:8px;
+    background:var(--pink-soft);padding:4px 12px;border-radius:10px;
+    display:inline-block;
+  }
+  .price-card .desc{margin-top:14px;color:#7a5a68;font-size:14px;}
+
+  /* 增值服务 */
+  .extras{background:var(--cream);}
+  .extras-list{
+    max-width:780px;margin:0 auto;
+    background:#fff;border-radius:20px;padding:30px;
+    box-shadow:var(--shadow);
+  }
+  .extras-row{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:14px 0;border-bottom:1px dashed var(--pink);
+    font-size:15px;
+  }
+  .extras-row:last-child{border-bottom:none;}
+  .extras-row .name{display:flex;align-items:center;gap:10px;}
+  .extras-row .price-tag{
+    color:var(--pink-deep);font-weight:700;
+    background:var(--pink-soft);padding:4px 14px;border-radius:12px;
+  }
+  .extras-row .free-tag{
+    color:#3da874;font-weight:700;
+    background:#d6f0e2;padding:4px 14px;border-radius:12px;
+  }
+
+  /* 小红书 */
+  .xhs{
+    background:linear-gradient(135deg,#ffeef2 0%,#fff7f0 50%,#fff0c2 100%);
+    text-align:center;
+  }
+  .xhs-card{
+    display:inline-block;background:#fff;
+    padding:40px 50px;border-radius:24px;
+    box-shadow:var(--shadow);max-width:560px;
+  }
+  .xhs-id{
+    font-family:"Courier New",monospace;
+    background:var(--pink-soft);color:var(--pink-deep);
+    padding:8px 18px;border-radius:10px;
+    font-weight:700;display:inline-block;margin:14px 0;
+  }
+  .xhs-num{
+    font-size:60px;font-weight:900;
+    background:linear-gradient(90deg,var(--pink-deep),#ff9966);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    line-height:1;
+  }
+
+  /* 联系 */
+  .contact{background:#fff;text-align:center;}
+  .contact-list{
+    display:flex;justify-content:center;gap:24px;flex-wrap:wrap;margin-top:30px;
+  }
+  .contact-item{
+    background:var(--cream);padding:24px 28px;border-radius:18px;
+    box-shadow:var(--shadow);min-width:220px;
+    border:2px solid transparent;transition:.3s;
+  }
+  .contact-item:hover{border-color:var(--pink);}
+  .contact-item .ic{font-size:36px;margin-bottom:10px;}
+  .contact-item strong{display:block;margin-bottom:6px;color:var(--pink-deep);}
+  .contact-item p{font-size:14px;color:#7a5a68;}
+
+  .notice{
+    max-width:780px;margin:40px auto 0;
+    background:var(--yellow);border-radius:16px;
+    padding:18px 24px;text-align:center;
+    font-size:14px;color:#7a5a68;
+  }
+
+  footer{
+    text-align:center;padding:30px;
+    background:#4a3540;color:#ffd6e6;font-size:14px;
+  }
+  footer .heart{color:var(--pink);}
+  footer .small{color:#a8889a;font-size:12px;margin-top:8px;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <div class="logo">饼饼的拼豆小屋<span>· Bingbing's Bead House</span></div>
+    <ul>
+      <li><a href="#about">关于</a></li>
+      <li><a href="#info">营业</a></li>
+      <li><a href="#gallery">作品</a></li>
+      <li><a href="#price">价格</a></li>
+      <li><a href="#xhs">小红书</a></li>
+      <li><a href="#contact">联系</a></li>
+    </ul>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+  <span class="dot d1"></span>
+  <span class="dot d2"></span>
+  <span class="dot d3"></span>
+  <span class="dot d4"></span>
+  <span class="dot d5"></span>
+  <div class="tag">📍 大连 · 甘井子万达旁</div>
+  <h1>饼饼的拼豆小屋<br/>家庭拼豆店开业啦</h1>
+  <p class="sub">一家藏在大连甘井子的家庭拼豆小店，<br/>用一颗颗小豆豆，拼出 Hello Kitty 的温柔世界 🎀</p>
+  <div class="badges">
+    <div class="badge">🏠 家庭工作室</div>
+    <div class="badge">🎀 Kitty 主题</div>
+    <div class="badge">🎨 像素风手作</div>
+    <div class="badge">💝 接受定制</div>
+    <div class="badge">⏰ 早 9 晚 9</div>
+  </div>
+  <a href="#price" class="btn">查看价目表</a>
+  <a href="#xhs" class="btn outline">逛逛小红书</a>
+</section>
+
+<!-- 关于 -->
+<section class="about" id="about">
+  <div class="container">
+    <h2 class="sec-title">关于小屋</h2>
+    <p class="sec-desc">一颗豆豆很小，一万颗豆豆就是一整个温柔的世界</p>
+    <div class="about-grid">
+      <div class="about-img">🎀</div>
+      <div>
+        <p>你好呀，我是饼饼 ✿ 这里是我的家庭拼豆小屋。</p>
+        <p>小屋开在<strong>大连市甘井子区万达旁边</strong>，是一间属于豆豆与少女心的家庭工作室。从一次偶然的尝试开始，便爱上了拼豆这门慢慢的手艺——每一颗豆豆都被认真摆放，每一次熨烫都像在封存一段温柔的时光。</p>
+        <p>这里有可爱的 Hello Kitty 系列、马戏团小伙伴、节日限定挂件、像素风冰箱贴，也有为你量身定制的独家心意。无论是想给自己一份治愈，还是给朋友一份惊喜，欢迎来小屋坐坐。</p>
+        <div class="info-box">
+          <strong>📍 小屋坐标：</strong>大连市甘井子区万达广场旁<br/>
+          <strong>🎨 主理人：</strong>饼饼<br/>
+          <strong>💌 营业理念：</strong>小本生意，认真手作，欢迎来玩
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 营业信息 -->
+<section class="info" id="info">
+  <div class="container">
+    <h2 class="sec-title">营业信息</h2>
+    <p class="sec-desc">每一个有灵感的日子，小屋都为你打开门</p>
+    <div class="info-grid">
+      <div class="info-card">
+        <div class="ic">📍</div>
+        <h4>店铺位置</h4>
+        <p>大连市甘井子区<br/><strong>万达广场旁</strong></p>
+      </div>
+      <div class="info-card">
+        <div class="ic">🌞</div>
+        <h4>工作日营业</h4>
+        <p>周一至周五<br/><strong>10:00 — 21:00</strong></p>
+      </div>
+      <div class="info-card">
+        <div class="ic">🌈</div>
+        <h4>周末营业</h4>
+        <p>周六 / 周日<br/><strong>9:00 — 21:00</strong></p>
+      </div>
+      <div class="info-card">
+        <div class="ic">📞</div>
+        <h4>到店预约</h4>
+        <p>加好友 · 提前预约<br/><strong>避免久等</strong></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 作品展示 -->
+<section class="gallery" id="gallery">
+  <div class="container">
+    <h2 class="sec-title">作品展示</h2>
+    <p class="sec-desc">每一件都是限量手作，独一无二</p>
+    <div class="grid">
+      <div class="card">
+        <div class="pic c1">🧙‍♀️</div>
+        <div class="info-pad">
+          <h4>巫师 Kitty</h4>
+          <span class="tag-s">小图 · 14.9</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="pic c2">🦋</div>
+        <div class="info-pad">
+          <h4>蝴蝶仙子 Kitty</h4>
+          <span class="tag-s">小图 · 14.9</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="pic c3">🌸</div>
+        <div class="info-pad">
+          <h4>樱花和服 Kitty</h4>
+          <span class="tag-s">小图 · 14.9</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="pic c4">🍎</div>
+        <div class="info-pad">
+          <h4>苹果兔兔</h4>
+          <span class="tag-s">中图 · 19.9</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="pic c5">🌮</div>
+        <div class="info-pad">
+          <h4>塔可猫咪</h4>
+          <span class="tag-s">中图 · 19.9</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="pic c6">🚂</div>
+        <div class="info-pad">
+          <h4>Kitty 小火车</h4>
+          <span class="tag-s">大图 · 24.9</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="pic c2">🤡</div>
+        <div class="info-pad">
+          <h4>马戏团小丑</h4>
+          <span class="tag-s">系列款</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="pic c3">🎄</div>
+        <div class="info-pad">
+          <h4>圣诞 Kitty</h4>
+          <span class="tag-s">节日限定</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 价格 -->
+<section class="price" id="price">
+  <div class="container">
+    <h2 class="sec-title">价目表</h2>
+    <p class="sec-desc">价格根据图纸大小以此类推 · 全部不限时</p>
+    <div class="price-grid">
+      <div class="price-card">
+        <div class="ic">🌷</div>
+        <h3>小图</h3>
+        <div class="num">¥14.9<small>r</small></div>
+        <div class="free">不限时</div>
+        <p class="desc">适合初学者上手<br/>例：巫师 Kitty、蝴蝶仙子</p>
+      </div>
+      <div class="price-card featured">
+        <div class="ic">🌸</div>
+        <h3>中图</h3>
+        <div class="num">¥19.9<small>r</small></div>
+        <div class="free">不限时</div>
+        <p class="desc">最受欢迎尺寸<br/>例：苹果兔兔、塔可猫咪</p>
+      </div>
+      <div class="price-card">
+        <div class="ic">🌻</div>
+        <h3>大图</h3>
+        <div class="num">¥24.9<small>r</small></div>
+        <div class="free">不限时</div>
+        <p class="desc">挑战创作大件<br/>例：Kitty 小火车、马戏团</p>
+      </div>
+    </div>
+    <div class="notice">
+      💡 镊子 / 双针豆笔 / 豆铲 免费使用 · 长钉画线豆板拼起来省力又轻松
+    </div>
+  </div>
+</section>
+
+<!-- 增值服务 -->
+<section class="extras">
+  <div class="container">
+    <h2 class="sec-title">增值服务</h2>
+    <p class="sec-desc">基础服务全免费，多一点小心思也不贵</p>
+    <div class="extras-list">
+      <div class="extras-row">
+        <div class="name">🔥 正常烫</div>
+        <div class="free-tag">免费</div>
+      </div>
+      <div class="extras-row">
+        <div class="name">🧊 冰箱贴</div>
+        <div class="free-tag">免费</div>
+      </div>
+      <div class="extras-row">
+        <div class="name">🛁 澡巾烫 / 毛巾烫</div>
+        <div class="price-tag">+1 元</div>
+      </div>
+      <div class="extras-row">
+        <div class="name">✨ 格利特粗闪 / 细闪</div>
+        <div class="price-tag">+1 元</div>
+      </div>
+      <div class="extras-row">
+        <div class="name">💎 钻石贴纸</div>
+        <div class="price-tag">+1 元</div>
+      </div>
+      <div class="extras-row">
+        <div class="name">🔗 挂件</div>
+        <div class="price-tag">+1 元</div>
+      </div>
+      <div class="extras-row">
+        <div class="name">🌀 旋转轴承</div>
+        <div class="price-tag">+2 元</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 小红书 -->
+<section class="xhs" id="xhs">
+  <div class="container">
+    <h2 class="sec-title">来小红书找我玩</h2>
+    <p class="sec-desc">日常更新作品过程、配色灵感与上新通知</p>
+    <div class="xhs-card">
+      <div class="xhs-num">25+</div>
+      <p style="margin-top:8px;">小红书累计点赞与收藏</p>
+      <div class="xhs-id">📕 小红书号：hby15146907924</div>
+      <p style="color:#7a5a68;margin-bottom:18px;">搜索「<strong style="color:var(--pink-deep);">饼饼的拼豆小屋</strong>」<br/>即可看到 Hello Kitty 巫师、马戏团、塔可猫等全部作品 💗</p>
+      <a href="https://www.xiaohongshu.com/user/profile/63b548bd00000000260110e6" target="_blank" class="btn">前往小红书主页</a>
+    </div>
+  </div>
+</section>
+
+<!-- 联系 -->
+<section class="contact" id="contact">
+  <div class="container">
+    <h2 class="sec-title">联系小屋</h2>
+    <p class="sec-desc">无论是定制咨询，还是想到店体验，随时欢迎</p>
+    <div class="contact-list">
+      <div class="contact-item">
+        <div class="ic">📕</div>
+        <strong>小红书</strong>
+        <p>饼饼的拼豆小屋<br/>hby15146907924</p>
+      </div>
+      <div class="contact-item">
+        <div class="ic">💬</div>
+        <strong>微信预约</strong>
+        <p>扫描店招二维码<br/>添加请备注「拼豆」</p>
+      </div>
+      <div class="contact-item">
+        <div class="ic">📍</div>
+        <strong>到店地址</strong>
+        <p>大连甘井子<br/>万达广场旁</p>
+      </div>
+      <div class="contact-item">
+        <div class="ic">⏰</div>
+        <strong>营业时间</strong>
+        <p>工作日 10:00–21:00<br/>周末 9:00–21:00</p>
+      </div>
+    </div>
+    <div class="notice">
+      🌷 小本生意，完美主义者勿扰 · 加好友请提前预约，感谢理解
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2026 饼饼的拼豆小屋 Bingbing's Bead House · Made with <span class="heart">♥</span> in 大连甘井子
+  <div class="small">每一颗豆豆，都是为你认真摆下的小心意</div>
+</footer>
+
+</body>
+</html>
